@@ -1,8 +1,10 @@
- export function getOperands(urlTokens){
+import { operations } from "../config/operations.mjs";
+
+export function getOperands(urlTokens) {
     const op1 = +urlTokens[2]
     const op2 = +urlTokens[3]
-    if(!isNaN(op1) && !isNaN(op2)){
-        return [op1,op2];
+    if (!isNaN(op1) && !isNaN(op2)) {
+        return [op1, op2];
     }
 }
 
@@ -13,12 +15,12 @@ export function parseUrl(url) {
     return { operationType, operands };
 }
 
-export function handleUnsupportedMethod(view, res, operationType) {
-    const html = view.getHtml(`Method ${operationType} unsupported`, true);
-    res.end(html);
-}
-
-export function handleOperands(view, res) {
-    const html = view.getHtml('Invalid operands', true);
-    res.end(html);
+export function generateResponse(operationType, operands, view) {
+    let response;
+    if (operations.has(operationType)) {
+        response = view.getHtml(`Method ${operationType} unsupported`, true);
+    } else if (!operands) {
+        response = view.getHtml(`Operands are not numbers`, true);
+    }
+    return response;
 }
