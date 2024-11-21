@@ -1,6 +1,8 @@
+import { OPERATIONS } from "./constatnts.mjs";
+
 export const operations = new Map([
-  ['add', (a, b) => a + b],
-  ['subtract', (a, b) => a - b],
-  ['multiply', (a, b) => a * b],
-  ['divide', (a, b) => a / b],
+  [OPERATIONS.ADD, (a, b) => a + b],
+  [OPERATIONS.SUBTRACT, (a, b) => a - b],
+  [OPERATIONS.MULTIPLY, (a, b) => a * b],
+  [OPERATIONS.DIVIDE, (a, b) => a / b],
 ]);
