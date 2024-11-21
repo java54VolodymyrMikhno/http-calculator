@@ -16,7 +16,7 @@ const view = new CalculatorView();
 server.on('request', (req, res) => {
     res.setHeader('Content-Type', 'text/html')
     const { operationType, operands } = parseUrl(req.url);
-    response = generateResponse(operationType, operands, view);
+    const response = generateResponse(operationType, operands, view);
     response ? res.end(response) : server.emit(operationType, operands, res);
 });
 

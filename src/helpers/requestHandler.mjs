@@ -17,7 +17,7 @@ export function parseUrl(url) {
 
 export function generateResponse(operationType, operands, view) {
     let response;
-    if (operations.has(operationType)) {
+    if (!operations.has(operationType)) {
         response = view.getHtml(`Method ${operationType} unsupported`, true);
     } else if (!operands) {
         response = view.getHtml(`Operands are not numbers`, true);
