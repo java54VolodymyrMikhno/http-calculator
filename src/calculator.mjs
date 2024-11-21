@@ -7,7 +7,7 @@ import { parseUrl, handleOperands, handleUnsupportedMethod } from './helpers/req
 const server = http.createServer();
 const PORT = 3500;
 server.listen(PORT, () => {
-    console.log(`Server is running on port ${server.address().port}`);
+    console.log(`Server is starting on port ${server.address().port}`);
 });
 new CalculatorService(server, operations);
 const view = new CalculatorView();
