@@ -1,5 +1,12 @@
-export default class CalculatorView{
-    getHtml(res, isError){
-        return `<label style="font-size:40px; display:block;text-align:center;color:${isError ? 'red':'green'}">${res}</label>`
+export default class CalculatorView {
+    getHtml(res, isError) {
+        const style = `
+                        font-size: ${config.fontSize};
+                        display: block;
+                        text-align: ${config.textAlign};
+                        color: ${isError ? config.errorColor : config.resultColor};
+                    `;
+
+        return `<label style="${style}>" ${res} </label>`
     }
 }
