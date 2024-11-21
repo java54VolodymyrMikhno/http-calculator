@@ -2,6 +2,7 @@ import http from 'node:http';
 import CalculatorService from './service/CalculatorServise.mjs';
 import CalculatorView from './view/CalculatorView.mjs';
 import { operations } from './config/operations.mjs';
+import { getOperands } from './helpers/requestHandler.mjs';
 
 const server = http.createServer();
 const PORT = 3500;
@@ -31,10 +32,3 @@ server.on('request', (req, res) => {
  
  
 });
-function getOperands(urlTokens){
-    const op1 = +urlTokens[2]
-    const op2 = +urlTokens[3]
-    if(!isNaN(op1) && !isNaN(op2)){
-        return [op1,op2];
-    }
-}
